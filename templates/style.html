@@ -1,0 +1,230 @@
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100%;
+        background: #2c3e50;
+        color: #ecf0f1;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+        z-index: 1001;
+    }
+
+    @media (max-width: 991.98px) {
+        .sidebar {
+            transform: translateX(-220px);
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+    }
+
+    .sidebar-header {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        padding: .6rem;
+        border-bottom: 1px solid rgb(255, 255, 255);
+        border-right: 1px solid rgb(255, 255, 255);
+    }
+
+    .sidebar-header i {
+        font-size: 1.5rem;
+        margin-right: .5rem;
+        padding-left: 25px;
+    }
+
+    .sidebar-header h4 {
+        margin: 5px;
+        font-size: 1rem;
+    }
+
+    .user {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        padding: .6rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .user img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: .5rem;
+        border: 1px solid #fff;
+    }
+
+    .user p {
+        margin: 0;
+        font-size: .9rem;
+    }
+
+    .bar {
+        flex: 1 1 auto;
+        overflow-y: auto;
+    }
+
+    .bar .nav-link {
+        color: #bdc3c7;
+        padding: .6rem 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .bar .nav-link i {
+        margin-right: .5rem;
+    }
+
+    .bar .nav-link.active,
+    .bar .nav-link:hover {
+        background: #34495e;
+        color: #ecf0f1;
+        text-decoration: none;
+    }
+
+    /* Topbar */
+    header.topbar {
+        position: fixed;
+        top: 0;
+        left: 220px;
+        right: 0;
+        height: 56px;
+        background: #2c3e50;
+        box-shadow: #2c3e50;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    @media (max-width: 991.98px) {
+        header.topbar {
+            left: 0;
+        }
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* search at left */
+    .topbar .search-box .input-group {
+        height: 20px;
+        width: 350px;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 767.98px) {
+        .topbar .search-box .input-group {
+            width: 100%;
+            max-width: 250px;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .topbar .search-box .input-group {
+            max-width: 200px;
+        }
+    }
+
+    /* logout at bottom right */
+    .logout-btn,
+    .Messages,
+    .Notifications {
+        padding: 0 10px !important;
+    }
+
+    /* Main content */
+    .main-content {
+        margin-top: 56px;
+        margin-left: 220px;
+        padding: 1.5rem;
+        background: #ecf0f1;
+        min-height: calc(100% - 56px);
+        transition: margin-left 0.3s ease;
+    }
+
+    @media (max-width: 991.98px) {
+        .main-content {
+            margin-left: 0;
+        }
+    }
+
+    /* Overlay for mobile sidebar */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    @media (max-width: 991.98px) {
+        .overlay.active {
+            display: block;
+        }
+    }
+
+    /* Responsive right header for mobile */
+    @media (max-width: 991.98px) {
+
+        .Messages button,
+        .Notifications button,
+        .logout-btn a {
+            padding: 0 5px !important;
+            font-size: 0;
+            /* Hide text */
+        }
+
+        .Messages button i,
+        .Notifications button i,
+        .logout-btn a i {
+            font-size: 1rem;
+            /* Keep icon size */
+            margin-right: 0;
+            /* Remove margin for tighter spacing */
+        }
+
+        .Messages button .badge,
+        .Notifications button .badge {
+            position: relative;
+            top: -10px;
+            left: -5px;
+            font-size: 0.6rem;
+        }
+
+        .Messages button::before,
+        .Notifications button::before,
+        .logout-btn a::before {
+            content: none;
+            /* Remove text content */
+        }
+
+        .Messages button .bi-envelope,
+        .Notifications button .bi-bell,
+        .logout-btn a .bi-box-arrow-right {
+            display: inline-block;
+            /* Ensure icons are visible */
+        }
+    }
+</style>
